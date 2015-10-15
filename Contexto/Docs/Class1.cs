@@ -8,5 +8,9 @@ namespace Contexto.Docs
 {
     class Class1
     {
+        public void teste(int i)
+        {
+            i ++;
+        }
     }
 }
