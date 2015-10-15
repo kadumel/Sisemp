@@ -1,0 +1,47 @@
+﻿@model Contexto.Models.EMP
+
+@{
+    ViewBag.Title = "Excluir";
+}
+<br/>
+<h2>Excluir Empresa</h2>
+
+<h3>Você deseja Excluir essa Empresa?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CODIGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CODIGO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RAZAOSOCIAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RAZAOSOCIAL)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Cancelar", "ListEmp", "Home")
+        </div>
+    }
+</div>
