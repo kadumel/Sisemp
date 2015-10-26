@@ -160,6 +160,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CliController.cs" />
+    <Compile Include="Controllers\CrdController.cs" />
     <Compile Include="Controllers\EmpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -230,6 +231,10 @@
     <Content Include="Views\Cli\ExcluirCli.cshtml" />
     <Content Include="Views\Cli\ListCli.cshtml" />
     <Content Include="Views\Cli\Detalhe.cshtml" />
+    <Content Include="Views\Crd\CriarCrd.cshtml" />
+    <Content Include="Views\Crd\ListCrd.cshtml" />
+    <Content Include="Views\Crd\EditarCrd.cshtml" />
+    <Content Include="Views\Crd\ExcluirCrd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

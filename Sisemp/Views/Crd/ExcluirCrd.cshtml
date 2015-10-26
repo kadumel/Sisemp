@@ -1,0 +1,48 @@
+﻿@model Contexto.Models.CRD
+
+@{
+    ViewBag.Title = "Excluir";
+}
+<br />
+<h2>Excluir Receita ou Despesa</h2>
+
+<h3>Você tem certeza que deseja excluir esse registro?</h3>
+<div>
+    <h4>CRD</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CODIGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CODIGO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CODIGO_PAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CODIGO_PAI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOME)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "ListCrd")
+        </div>
+    }
+</div>

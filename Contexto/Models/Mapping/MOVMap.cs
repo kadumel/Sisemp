@@ -11,9 +11,6 @@ namespace Contexto.Models.Mapping
             this.HasKey(t => t.CODIGO);
 
             // Properties
-            this.Property(t => t.CODIGO)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
             this.Property(t => t.OBS)
                 .IsFixedLength()
                 .HasMaxLength(100);

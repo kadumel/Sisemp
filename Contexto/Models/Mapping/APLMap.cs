@@ -11,9 +11,6 @@ namespace Contexto.Models.Mapping
             this.HasKey(t => t.CODIGO);
 
             // Properties
-            this.Property(t => t.CODIGO)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
             // Table & Column Mappings
             this.ToTable("APL");
             this.Property(t => t.CODIGO).HasColumnName("CODIGO");

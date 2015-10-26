@@ -11,22 +11,19 @@ namespace Contexto.Models.Mapping
             this.HasKey(t => t.CODIGO);
 
             // Properties
-            this.Property(t => t.CODIGO)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
             this.Property(t => t.NOME)
                 .IsFixedLength()
                 .HasMaxLength(40);
 
-            this.Property(t => t.MOTBOY)
+            this.Property(t => t.OBS)
                 .IsFixedLength()
-                .HasMaxLength(100);
+                .HasMaxLength(200);
 
             // Table & Column Mappings
             this.ToTable("ROT");
             this.Property(t => t.CODIGO).HasColumnName("CODIGO");
             this.Property(t => t.NOME).HasColumnName("NOME");
-            this.Property(t => t.MOTBOY).HasColumnName("MOTBOY");
+            this.Property(t => t.OBS).HasColumnName("OBS");
         }
     }
 }

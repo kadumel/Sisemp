@@ -12,7 +12,7 @@ namespace Contexto.Models
 
         public int CODIGO { get; set; }
         public string NOME { get; set; }
-        public string MOTBOY { get; set; }
+        public string OBS { get; set; }
         public virtual ICollection<MOV> MOVs { get; set; }
     }
 }

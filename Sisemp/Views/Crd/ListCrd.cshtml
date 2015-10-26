@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Contexto.Models.CRD>
+
+@{
+    ViewBag.Title = "Lista";
+}
+<br />
+<h2>Lista Receitas e Despesas</h2>
+<form class="form-search">
+    <input type="text" class="input-medium search-query">
+    <button type="submit" class="btn">Busca</button>
+</form>
+
+<p>
+    @Html.ActionLink("Novo", "CriarCrd")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CODIGO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CODIGO_PAI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOME)
+        </th>
+        <th>
+            AÇÕES
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODIGO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODIGO_PAI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOME)
+        </td>
+        <td>
+            @Html.ActionLink("Alterar", "EditarCrd", new { id = item.CODIGO }) |
+            @Html.ActionLink("Excluir", "ExcluirCrd", new { id = item.CODIGO })
+        </td>
+    </tr>
+}
+
+</table>

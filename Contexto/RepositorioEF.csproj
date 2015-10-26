@@ -47,11 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aplicação\ApCli.cs" />
+    <Compile Include="Aplicação\ApCrd.cs" />
     <Compile Include="Aplicação\ApEmp.cs" />
     <Compile Include="Conexao\CliCon.cs" />
+    <Compile Include="Conexao\CrdCon.cs" />
     <Compile Include="Contrato\IRepositorio.cs" />
     <Compile Include="Conexao\empCon.cs" />
-    <Compile Include="Docs\Class1.cs" />
     <Compile Include="Models\APL.cs" />
     <Compile Include="Models\CLI.cs" />
     <Compile Include="Models\CRD.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Models\SISEMPContext.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Repositorios\CliRepositorio.cs" />
+    <Compile Include="Repositorios\CrdRepositorio.cs" />
     <Compile Include="Repositorios\EmpRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
