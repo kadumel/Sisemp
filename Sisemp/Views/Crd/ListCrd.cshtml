@@ -5,15 +5,20 @@
 }
 <br />
 <h2>Lista Receitas e Despesas</h2>
-<form class="form-search">
-    <input type="text" class="input-medium search-query">
-    <button type="submit" class="btn">Busca</button>
-</form>
+<br />
+
+@using (Html.BeginForm())
+{
+<div class="form-search">
+    <input type="text" class="input-medium search-query" name="pesquisa">
+    <button type="submit" class="btn">Buscar</button>
+</div>
+}
 
 <p>
     @Html.ActionLink("Novo", "CriarCrd")
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CODIGO)

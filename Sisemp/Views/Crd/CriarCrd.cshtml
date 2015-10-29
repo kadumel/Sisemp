@@ -1,11 +1,12 @@
 ﻿@model Contexto.Models.CRD
 
 @{
+    
     ViewBag.Title = "Novo";
 }
 <br/>
 <h2>Cadastro Receita e Despesa</h2>
-
+<br />
 
 @using (Html.BeginForm()) 
 {
@@ -25,9 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CODIGO_PAI, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.DropDownList("CODIGO", String.Empty)*@
-                @*@Html.DropDownList("CODIGO", (IEnumerable<SelectListItem>)ViewBag.CODIGO, "Select CODIGO")*@
-                @Html.EditorFor(model => model.CODIGO_PAI, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("Crdid",(IEnumerable<SelectListItem>)ViewBag.Crdid,"--Selecione a conta pai--", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CODIGO_PAI, "", new { @class = "text-danger" })
             </div>
         </div>

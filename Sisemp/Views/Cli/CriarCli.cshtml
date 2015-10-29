@@ -5,7 +5,7 @@
 }
 <br/>
 <h2>Cadastro de cliente</h2>
-
+<br />
 
 @using (Html.BeginForm()) 
 {
@@ -26,7 +26,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EMP_CODIGO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EMP_CODIGO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("EmpId", (IEnumerable<SelectListItem>)ViewBag.EmpId, "--Selecione a empresa--", new { @class = "form-control" })
+                @*@Html.EditorFor(model => model.EMP_CODIGO, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.EMP_CODIGO, "", new { @class = "text-danger" })
             </div>
         </div>

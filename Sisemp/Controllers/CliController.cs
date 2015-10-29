@@ -14,10 +14,13 @@ namespace Sisemp.Controllers
     public class CliController : Controller
     {
 
+        private readonly ApEmp appEmp;
         private readonly ApCli appCli;
+       
         public CliController()
         {
             appCli = CliCon.ApCliCon();
+            appEmp = empCon.ApEmpCon();
         }
 
         public ActionResult ListCli()
@@ -25,17 +28,27 @@ namespace Sisemp.Controllers
             var listaCli = appCli.ListarTodos();
             return View(listaCli); 
         }
-        
-        //public ActionResult ListEmp(string nome)
-        //{
-        //    var listaEmp = appEmp.ListarTodos();
-        //    listaEmp.Where(x => x.NOME.Contains(nome));
-        //    return View(listaEmp);
-        //}
+        [HttpPost, ActionName("ListCli")]
+        public ActionResult ListCliBuscar()
+        {
+            if (Request["pesquisa"].Equals(""))
+            {
+                var listaCli = appCli.ListarTodos();
+                return View(listaCli);
+            }
+            else
+            {
+                var listaCli = appCli.ListarTodos().Where(x => x.RAZAOSOCIAL.Contains(Request["pesquisa"].ToUpper()));
+                return View(listaCli);
+            }
+
+        }
+
 
         public ActionResult CriarCLi()
         {
-
+            
+            ViewBag.EmpId = new SelectList(appEmp.ListarTodos(), "CODIGO", "NOME");
             return View();
         }
 
@@ -44,6 +57,18 @@ namespace Sisemp.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (!Request["EmpId"].Equals(""))
+                {
+                    cli.EMP_CODIGO = Convert.ToInt32(Request["EmpId"]);
+                }
+                cli.NOME = cli.NOME.ToUpper().Trim();
+                cli.RAZAOSOCIAL = cli.RAZAOSOCIAL.ToUpper().Trim();
+                cli.END = cli.END.ToUpper().Trim();
+                cli.COMP = cli.COMP.ToUpper().Trim();
+                cli.BAIRRO = cli.BAIRRO.ToUpper().Trim();
+                cli.CIDADE = cli.CIDADE.ToUpper().Trim();
+                cli.UF = cli.UF.ToUpper().Trim();
+                cli.OBS = cli.OBS.ToUpper().Trim();
                 appCli.Salvar(cli);
                 return RedirectToAction("ListCli");
             }
@@ -57,6 +82,7 @@ namespace Sisemp.Controllers
             if (cli == null)
                 return HttpNotFound();
 
+            ViewBag.EmpId = new SelectList(appEmp.ListarTodos(), "CODIGO", "NOME", cli.EMP_CODIGO);
             return View(cli);
         }
 
@@ -66,15 +92,15 @@ namespace Sisemp.Controllers
         {
             if (ModelState.IsValid)
             {
-                cli.EMP_CODIGO = cli.EMP_CODIGO;
-                cli.NOME = cli.NOME.ToUpper();
-                cli.RAZAOSOCIAL = cli.RAZAOSOCIAL.ToUpper();
-                cli.END = cli.END.ToUpper();
-                cli.COMP = cli.COMP.ToUpper();
-                cli.BAIRRO = cli.BAIRRO.ToUpper();
-                cli.CIDADE = cli.CIDADE.ToUpper();
-                cli.UF = cli.UF.ToUpper();
-                cli.OBS = cli.OBS.ToUpper();
+               
+                cli.NOME = cli.NOME.ToUpper().Trim();
+                cli.RAZAOSOCIAL = cli.RAZAOSOCIAL.ToUpper().Trim();
+                cli.END = cli.END.ToUpper().Trim();
+                cli.COMP = cli.COMP.ToUpper().Trim();
+                cli.BAIRRO = cli.BAIRRO.ToUpper().Trim();
+                cli.CIDADE = cli.CIDADE.ToUpper().Trim();
+                cli.UF = cli.UF.ToUpper().Trim();
+                cli.OBS = cli.OBS.ToUpper().Trim();
 
                 appCli.Salvar(cli);
                 return RedirectToAction("ListCli");

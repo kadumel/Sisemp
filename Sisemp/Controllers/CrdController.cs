@@ -22,42 +22,47 @@ namespace Sisemp.Controllers
 
         public ActionResult ListCrd()
         {
+
             var listaCrd = appCrd.ListarTodos();
+
             return View(listaCrd); 
         }
-        
-        //public ActionResult ListEmp(string nome)
-        //{
-        //    var listaEmp = appEmp.ListarTodos();
-        //    listaEmp.Where(x => x.NOME.Contains(nome));
-        //    return View(listaEmp);
-        //}
+
+        [HttpPost, ActionName("ListCrd")]
+        public ActionResult ListCrdBuscar()
+        {
+            if (Request["pesquisa"].Equals(""))
+            {
+                var listaCrd = appCrd.ListarTodos();
+                return View(listaCrd);
+            }
+            else
+            {
+                var listaCrd = appCrd.ListarTodos().Where(x => x.NOME.Contains(Request["pesquisa"].ToUpper()));
+                return View(listaCrd);
+            }
+
+        }
+
 
         public ActionResult CriarCrd()
         {
-            List<SelectListItem> lista = new List<SelectListItem>();
-            var List = appCrd.ListarTodos();
-            Console.WriteLine("Teste!!!");
-            foreach (var c in List)
-            {
-                Console.WriteLine(c.NOME);
-                lista.Add(new SelectListItem
-                {
-                    Text = c.NOME,
-                    Value = c.CODIGO.ToString()
-                    
-                });
-            }
-            ViewBag.CODIGO = lista;
+            ViewBag.Crdid = new SelectList(appCrd.ListarTodos(), "CODIGO","NOME");
+
             return View();
         }
 
         [HttpPost]
         public ActionResult CriarCrd(CRD crd)
         {
-            Console.WriteLine("Teste2!!!");
+              
             if (ModelState.IsValid)
             {
+                if (!Request["Crdid"].Equals(""))
+                {
+                    crd.CODIGO_PAI = Convert.ToInt32(Request["Crdid"]);
+                }
+                crd.NOME = crd.NOME.ToUpper().Trim();
                 appCrd.Salvar(crd);
                 return RedirectToAction("ListCrd");
             }
@@ -70,6 +75,8 @@ namespace Sisemp.Controllers
 
             if (crd == null)
                 return HttpNotFound();
+            
+            ViewBag.crdEdit = new SelectList(appCrd.ListarTodos(), "CODIGO", "NOME", crd.CODIGO_PAI);
 
             return View(crd);
         }
@@ -80,9 +87,7 @@ namespace Sisemp.Controllers
         {
             if (ModelState.IsValid)
             {
-               
-                crd.NOME = crd.NOME.ToUpper();
-          
+                crd.NOME = crd.NOME.ToUpper().Trim();
                 appCrd.Salvar(crd);
                 return RedirectToAction("ListCrd");
             }

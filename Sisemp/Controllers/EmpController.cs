@@ -25,13 +25,22 @@ namespace Sisemp.Controllers
             var listaEmp = appEmp.ListarTodos();
             return View(listaEmp); 
         }
-        
-        //public ActionResult ListEmp(string nome)
-        //{
-        //    var listaEmp = appEmp.ListarTodos();
-        //    listaEmp.Where(x => x.NOME.Contains(nome));
-        //    return View(listaEmp);
-        //}
+
+        [HttpPost, ActionName("ListEmp")]
+        public ActionResult ListEmpBuscar()
+        {
+            if (Request["pesquisa"].Equals(""))
+            {
+                var ListEmp = appEmp.ListarTodos();
+                return View(ListEmp);
+            }
+            else
+            {
+                var ListEmp = appEmp.ListarTodos().Where(x => x.RAZAOSOCIAL.Contains(Request["pesquisa"].ToUpper()));
+                return View(ListEmp);
+            }
+
+        }
 
         public ActionResult CriarEmp()
         {
