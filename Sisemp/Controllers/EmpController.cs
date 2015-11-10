@@ -75,9 +75,6 @@ namespace Sisemp.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                emp.NOME = emp.NOME.ToUpper();
-                emp.RAZAOSOCIAL = emp.RAZAOSOCIAL.ToUpper();
                 appEmp.Salvar(emp);
                 return RedirectToAction("ListEmp");
             }

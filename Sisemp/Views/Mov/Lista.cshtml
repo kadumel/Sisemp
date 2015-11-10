@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Contexto.Models.MOV>
+
+@{
+    ViewBag.Title = "Lista";
+}
+<br/>
+<h2>Listar Movimentos</h2>
+<br />
+@using (Html.BeginForm())
+{
+    <div class="form-search">
+        <input type="text" class="input-medium search-query" name="pesquisa">
+        <button type="submit" class="btn">Buscar</button>
+    </div>
+}
+<p>
+    @Html.ActionLink("Novo", "Criar")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CODIGO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEQUENCIAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APL_CODIGO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ROT_CODIGO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VALOR_TOTAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VALOR_REC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OBS)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODIGO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEQUENCIAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APL_CODIGO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ROT_CODIGO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DATA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VALOR_TOTAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VALOR_REC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OBS)
+        </td>
+        <td>
+            @Html.ActionLink("Alterar", "Editar", new { id = item.CODIGO }) |
+            @Html.ActionLink("Excluir", "Excluir", new { id = item.CODIGO })
+        </td>
+    </tr>
+}
+
+</table>

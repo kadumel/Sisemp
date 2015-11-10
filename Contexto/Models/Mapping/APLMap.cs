@@ -23,8 +23,12 @@ namespace Contexto.Models.Mapping
             this.Property(t => t.DTBASE).HasColumnName("DTBASE");
 
             // Relationships
-            this.HasRequired(t => t.APL2)
-                .WithOptional(t => t.APL1);
+            this.HasRequired(t => t.CLI)
+                .WithMany(t => t.APLs)
+                .HasForeignKey(d => d.CLI_CODIGO);
+            this.HasRequired(t => t.EMP)
+                .WithMany(t => t.APLs)
+                .HasForeignKey(d => d.EMP_CODIGO);
 
         }
     }

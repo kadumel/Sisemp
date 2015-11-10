@@ -7,3 +7,4 @@ C:\Users\Daniel\documents\visual studio 2013\Projects\Sisemp\Contexto\bin\Releas
 C:\Users\Daniel\documents\visual studio 2013\Projects\Sisemp\Contexto\bin\Release\EntityFramework.SqlServer.xml
 C:\Users\Daniel\documents\visual studio 2013\Projects\Sisemp\Contexto\obj\Release\Contexto.dll
 C:\Users\Daniel\documents\visual studio 2013\Projects\Sisemp\Contexto\obj\Release\Contexto.pdb
+C:\Users\Daniel\documents\visual studio 2013\Projects\Sisemp\Contexto\obj\Release\RepositorioEF.csprojResolveAssemblyReference.cache

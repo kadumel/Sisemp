@@ -5,6 +5,11 @@ namespace Contexto.Models
 {
     public partial class CLI
     {
+        public CLI()
+        {
+            this.APLs = new List<APL>();
+        }
+
         public int CODIGO { get; set; }
         public Nullable<int> EMP_CODIGO { get; set; }
         public string NOME { get; set; }
@@ -19,5 +24,6 @@ namespace Contexto.Models
         public string TEL { get; set; }
         public string CEL { get; set; }
         public string OBS { get; set; }
+        public virtual ICollection<APL> APLs { get; set; }
     }
 }

@@ -25,13 +25,13 @@ namespace Contexto
                 if (emp.CODIGO > 0)
                 {
                     var empAlterar = contexto.EMPs.First(x => x.CODIGO == emp.CODIGO);
-                    empAlterar.NOME = emp.NOME.Trim();
-                    empAlterar.RAZAOSOCIAL = emp.RAZAOSOCIAL.Trim();
+                    empAlterar.NOME = emp.NOME.ToUpper().Trim();
+                    empAlterar.RAZAOSOCIAL = emp.RAZAOSOCIAL.ToUpper().Trim();
                 }
                 else
                 {
-                    emp.NOME = emp.NOME.Trim();
-                    emp.RAZAOSOCIAL = emp.RAZAOSOCIAL.Trim();
+                    emp.NOME = emp.NOME.ToUpper().Trim();
+                    emp.RAZAOSOCIAL = emp.RAZAOSOCIAL.ToUpper().Trim();
                     contexto.EMPs.Add(emp);
                 }
                 contexto.SaveChanges();

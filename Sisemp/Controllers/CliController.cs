@@ -61,14 +61,7 @@ namespace Sisemp.Controllers
                 {
                     cli.EMP_CODIGO = Convert.ToInt32(Request["EmpId"]);
                 }
-                cli.NOME = cli.NOME.ToUpper().Trim();
-                cli.RAZAOSOCIAL = cli.RAZAOSOCIAL.ToUpper().Trim();
-                cli.END = cli.END.ToUpper().Trim();
-                cli.COMP = cli.COMP.ToUpper().Trim();
-                cli.BAIRRO = cli.BAIRRO.ToUpper().Trim();
-                cli.CIDADE = cli.CIDADE.ToUpper().Trim();
-                cli.UF = cli.UF.ToUpper().Trim();
-                cli.OBS = cli.OBS.ToUpper().Trim();
+                
                 appCli.Salvar(cli);
                 return RedirectToAction("ListCli");
             }
@@ -92,16 +85,6 @@ namespace Sisemp.Controllers
         {
             if (ModelState.IsValid)
             {
-               
-                cli.NOME = cli.NOME.ToUpper().Trim();
-                cli.RAZAOSOCIAL = cli.RAZAOSOCIAL.ToUpper().Trim();
-                cli.END = cli.END.ToUpper().Trim();
-                cli.COMP = cli.COMP.ToUpper().Trim();
-                cli.BAIRRO = cli.BAIRRO.ToUpper().Trim();
-                cli.CIDADE = cli.CIDADE.ToUpper().Trim();
-                cli.UF = cli.UF.ToUpper().Trim();
-                cli.OBS = cli.OBS.ToUpper().Trim();
-
                 appCli.Salvar(cli);
                 return RedirectToAction("ListCli");
             }

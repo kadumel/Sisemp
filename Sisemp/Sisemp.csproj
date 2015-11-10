@@ -159,10 +159,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\APLController.cs" />
     <Compile Include="Controllers\CliController.cs" />
     <Compile Include="Controllers\CrdController.cs" />
     <Compile Include="Controllers\EmpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MovController.cs" />
+    <Compile Include="Controllers\RotController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,6 +238,16 @@
     <Content Include="Views\Crd\ListCrd.cshtml" />
     <Content Include="Views\Crd\EditarCrd.cshtml" />
     <Content Include="Views\Crd\ExcluirCrd.cshtml" />
+    <Content Include="Views\Rot\Lista.cshtml" />
+    <Content Include="Views\Rot\Criar.cshtml" />
+    <Content Include="Views\Rot\Editar.cshtml" />
+    <Content Include="Views\Rot\Excluir.cshtml" />
+    <Content Include="Views\APL\Lista.cshtml" />
+    <Content Include="Views\APL\Criar.cshtml" />
+    <Content Include="Views\APL\Editar.cshtml" />
+    <Content Include="Views\APL\Excluir.cshtml" />
+    <Content Include="Views\Mov\Lista.cshtml" />
+    <Content Include="Views\Mov\Criar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

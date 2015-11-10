@@ -18,8 +18,8 @@ namespace Contexto.Models
         public Nullable<double> VALOR { get; set; }
         public Nullable<int> QTDE { get; set; }
         public Nullable<System.DateTime> DTBASE { get; set; }
-        public virtual APL APL1 { get; set; }
-        public virtual APL APL2 { get; set; }
+        public virtual CLI CLI { get; set; }
+        public virtual EMP EMP { get; set; }
         public virtual ICollection<MOV> MOVs { get; set; }
     }
 }

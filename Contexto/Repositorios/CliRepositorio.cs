@@ -23,18 +23,18 @@ namespace Contexto.Repositorios
                 {
                     var cliAlterar = contexto.CLIs.First(x => x.CODIGO == cli.CODIGO);
                     cliAlterar.EMP_CODIGO = cli.EMP_CODIGO;
-                    cliAlterar.NOME = cli.NOME.Trim();
-                    cliAlterar.RAZAOSOCIAL = cli.RAZAOSOCIAL.Trim();
-                    cliAlterar.CPF_CNPJ = cli.CPF_CNPJ.Trim();
-                    cliAlterar.END = cli.END.Trim();
-                    cliAlterar.COMP = cli.COMP.Trim();
-                    cliAlterar.CEP = cli.CEP.Trim();
-                    cliAlterar.BAIRRO = cli.BAIRRO.Trim();
-                    cliAlterar.CIDADE = cli.CIDADE.Trim();
-                    cliAlterar.UF = cli.UF.Trim();
-                    cliAlterar.TEL = cli.TEL.Trim();
-                    cliAlterar.CEL = cli.CEL.Trim();
-                    cliAlterar.OBS = cli.OBS.Trim();
+                    cliAlterar.NOME = cli.NOME.ToUpper().Trim();
+                    cliAlterar.RAZAOSOCIAL = cli.RAZAOSOCIAL.ToUpper().Trim();
+                    cliAlterar.CPF_CNPJ = cli.CPF_CNPJ.ToUpper().Trim();
+                    cliAlterar.END = cli.END.ToUpper().Trim();
+                    cliAlterar.COMP = cli.COMP.ToUpper().Trim();
+                    cliAlterar.CEP = cli.CEP.ToUpper().Trim();
+                    cliAlterar.BAIRRO = cli.BAIRRO.ToUpper().Trim();
+                    cliAlterar.CIDADE = cli.CIDADE.ToUpper().Trim();
+                    cliAlterar.UF = cli.UF.ToUpper().Trim();
+                    cliAlterar.TEL = cli.TEL.ToUpper().Trim();
+                    cliAlterar.CEL = cli.CEL.ToUpper().Trim();
+                    cliAlterar.OBS = cli.OBS.ToUpper().Trim();
                 }
                 else
                 {
@@ -54,6 +54,15 @@ namespace Contexto.Repositorios
                     //cli.TEL = cli.TEL.Equals(null) ? cli.TEL : cli.TEL.Trim();
                     //cli.CEL = cli.CEL.Equals(null) ? cli.CEL : cli.CEL.Trim();
                     //cli.OBS = cli.OBS.Equals(null) ? cli.OBS : cli.OBS.Trim();
+
+                    cli.NOME = cli.NOME.ToUpper().Trim();
+                    cli.RAZAOSOCIAL = cli.RAZAOSOCIAL.ToUpper().Trim();
+                    cli.END = cli.END.ToUpper().Trim();
+                    cli.COMP = cli.COMP.ToUpper().Trim();
+                    cli.BAIRRO = cli.BAIRRO.ToUpper().Trim();
+                    cli.CIDADE = cli.CIDADE.ToUpper().Trim();
+                    cli.UF = cli.UF.ToUpper().Trim();
+                    cli.OBS = cli.OBS.ToUpper().Trim();
                     contexto.CLIs.Add(cli);
                 }
                 contexto.SaveChanges();

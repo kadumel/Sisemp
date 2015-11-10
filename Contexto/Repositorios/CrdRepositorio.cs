@@ -23,11 +23,11 @@ namespace Contexto.Repositorios
                 {
                     var crdAlterar = contexto.CRDs.First(x => x.CODIGO == crd.CODIGO);
                     crdAlterar.CODIGO_PAI = crd.CODIGO_PAI;
-                    crdAlterar.NOME = crd.NOME;
+                    crdAlterar.NOME = crd.NOME.ToUpper().Trim();
                 }
                 else
                 {
-
+                    crd.NOME = crd.NOME.ToUpper().Trim();
                     contexto.CRDs.Add(crd);
                 }
                 contexto.SaveChanges();

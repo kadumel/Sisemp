@@ -62,7 +62,7 @@ namespace Sisemp.Controllers
                 {
                     crd.CODIGO_PAI = Convert.ToInt32(Request["Crdid"]);
                 }
-                crd.NOME = crd.NOME.ToUpper().Trim();
+               
                 appCrd.Salvar(crd);
                 return RedirectToAction("ListCrd");
             }
@@ -87,7 +87,7 @@ namespace Sisemp.Controllers
         {
             if (ModelState.IsValid)
             {
-                crd.NOME = crd.NOME.ToUpper().Trim();
+               
                 appCrd.Salvar(crd);
                 return RedirectToAction("ListCrd");
             }
