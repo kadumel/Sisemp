@@ -54,6 +54,11 @@ namespace Sisemp.Controllers
         {
             ViewBag.CliId = new SelectList(appCli.ListarTodos(), "CODIGO", "NOME");
             ViewBag.EmpId = new SelectList(appEmp.ListarTodos(), "CODIGO", "NOME");
+            ViewBag.TipoId = new SelectList(new List<SelectListItem>
+                                             {
+                                                new SelectListItem {Text = "Diario", Value = "D"},
+                                                new SelectListItem {Text = "Semanal", Value = "S"},
+                                             }, "Value", "Text");
             return View();
         }
 
@@ -62,10 +67,11 @@ namespace Sisemp.Controllers
         { 
             if (ModelState.IsValid)
             {
-                if (!Request["CliId"].Equals("") && !Request["EmpId"].Equals(""))
+                if (!Request["CliId"].Equals("") && !Request["EmpId"].Equals("") && !Request["TipoId"].Equals(""))
                 {
                     obj.CLI_CODIGO = Convert.ToInt32(Request["CliId"]);
                     obj.EMP_CODIGO = Convert.ToInt32(Request["EmpId"]);
+                    obj.PAGT= Request["TipoId"];
                 }
                 appApl.Salvar(obj);
                 return RedirectToAction("Lista");
@@ -82,6 +88,12 @@ namespace Sisemp.Controllers
 
             ViewBag.CliId = new SelectList(appCli.ListarTodos(), "CODIGO", "NOME", obj.CLI_CODIGO);
             ViewBag.EmpId = new SelectList(appEmp.ListarTodos(), "CODIGO", "NOME", obj.EMP_CODIGO);
+
+            ViewBag.TipoId = new SelectList( new List<SelectListItem>
+                                             {
+                                                new SelectListItem {Text = "Diario", Value = "D"},
+                                                new SelectListItem {Text = "Semanal", Value = "S"},
+                                             }, "Value", "Text", obj.PAGT);
 
             return View(obj);
         }

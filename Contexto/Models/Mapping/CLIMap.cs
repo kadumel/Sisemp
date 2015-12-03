@@ -31,10 +31,6 @@ namespace Contexto.Models.Mapping
                 .IsFixedLength()
                 .HasMaxLength(40);
 
-            this.Property(t => t.CEP)
-                .IsFixedLength()
-                .HasMaxLength(9);
-
             this.Property(t => t.BAIRRO)
                 .IsFixedLength()
                 .HasMaxLength(30);
@@ -62,19 +58,24 @@ namespace Contexto.Models.Mapping
             // Table & Column Mappings
             this.ToTable("CLI");
             this.Property(t => t.CODIGO).HasColumnName("CODIGO");
-            this.Property(t => t.EMP_CODIGO).HasColumnName("EMP_CODIGO");
             this.Property(t => t.NOME).HasColumnName("NOME");
             this.Property(t => t.RAZAOSOCIAL).HasColumnName("RAZAOSOCIAL");
             this.Property(t => t.CPF_CNPJ).HasColumnName("CPF-CNPJ");
             this.Property(t => t.END).HasColumnName("END");
             this.Property(t => t.COMP).HasColumnName("COMP");
-            this.Property(t => t.CEP).HasColumnName("CEP");
             this.Property(t => t.BAIRRO).HasColumnName("BAIRRO");
+            this.Property(t => t.ROTA).HasColumnName("ROTA");
             this.Property(t => t.CIDADE).HasColumnName("CIDADE");
             this.Property(t => t.UF).HasColumnName("UF");
             this.Property(t => t.TEL).HasColumnName("TEL");
             this.Property(t => t.CEL).HasColumnName("CEL");
             this.Property(t => t.OBS).HasColumnName("OBS");
+
+            // Relationships
+            this.HasOptional(t => t.ROT)
+                .WithMany(t => t.CLIs)
+                .HasForeignKey(d => d.ROTA);
+
         }
     }
 }

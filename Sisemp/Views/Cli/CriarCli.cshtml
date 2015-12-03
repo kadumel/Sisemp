@@ -23,14 +23,25 @@
             </div>
         </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.EMP_CODIGO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("EmpId", (IEnumerable<SelectListItem>)ViewBag.EmpId, "--Selecione a empresa--", new { @class = "form-control" })
-                @*@Html.EditorFor(model => model.EMP_CODIGO, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.EditorFor(model => model.EMP_CODIGO, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.EMP_CODIGO, "", new { @class = "text-danger" })
             </div>
+        </div>*@
+
+        <div class="form-group">
+           
+            @Html.LabelFor(model => model.ROTA, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("RotaId", (IEnumerable<SelectListItem>)ViewBag.RotaId, "--- Selecione a rota ---", new { @class = "form-control" })
+                @*@Html.EditorFor(model => model.ROTA, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.ROTA, "", new { @class = "text-danger" })
+            </div>
         </div>
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.NOME, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -51,7 +62,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CPF_CNPJ, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CPF_CNPJ, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.CPF_CNPJ, new { htmlAttributes = new { @class = "form-control", @onkeypress = "mascara(this,mcpf)", @placeholder = "999.999.999-99" } })
                 @Html.ValidationMessageFor(model => model.CPF_CNPJ, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -69,14 +80,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.COMP, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.COMP, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CEP, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CEP, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CEP, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -107,7 +110,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TEL, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TEL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.TEL, new { htmlAttributes = new { @class = "form-control", @onkeypress = "mascara(this,telefone)", @placeholder = "(99) 9999-9999" } })
                 @Html.ValidationMessageFor(model => model.TEL, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -115,7 +118,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CEL, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CEL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.CEL, new { htmlAttributes = new { @class = "form-control", @onkeypress = "mascara(this,telefone)", @placeholder = "(99) 9999-9999" } })
                 @Html.ValidationMessageFor(model => model.CEL, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -142,4 +145,45 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script>
+        function mascara(o, f) {
+            v_obj = o
+            v_fun = f
+            setTimeout("execmascara()", 1)
+        }
+
+        function execmascara() {
+            v_obj.value = v_fun(v_obj.value)
+        }
+        function telefone(v) {
+            v = v.replace(/\D/g, "")                 //Remove tudo o que não é dígito
+            v = v.replace(/^(\d\d)(\d)/g, "($1) $2") //Coloca parênteses em volta dos dois primeiros dígitos
+            v = v.replace(/(\d{4})(\d)/, "$1-$2")    //Coloca hífen entre o quarto e o quinto dígitos
+            return v
+        }
+        function mdata(v) {
+            v = v.replace(/\D/g, "");                    //Remove tudo o que não é dígito
+            v = v.replace(/(\d{2})(\d)/, "$1/$2");
+            v = v.replace(/(\d{2})(\d)/, "$1/$2");
+
+            v = v.replace(/(\d{2})(\d{2})$/, "$1$2");
+            return v;
+        }
+        function cnpj(v) {
+            v = v.replace(/\D/g, "")                           //Remove tudo o que não é dígito
+            v = v.replace(/^(\d{2})(\d)/, "$1.$2")             //Coloca ponto entre o segundo e o terceiro dígitos
+            v = v.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3") //Coloca ponto entre o quinto e o sexto dígitos
+            v = v.replace(/\.(\d{3})(\d)/, ".$1/$2")           //Coloca uma barra entre o oitavo e o nono dígitos
+            v = v.replace(/(\d{4})(\d)/, "$1-$2")              //Coloca um hífen depois do bloco de quatro dígitos
+            return v
+        }
+        function mcpf(v) {
+            v = v.replace(/\D/g, "")                    //Remove tudo o que não é dígito
+            v = v.replace(/(\d{3})(\d)/, "$1.$2")       //Coloca um ponto entre o terceiro e o quarto dígitos
+            v = v.replace(/(\d{3})(\d)/, "$1.$2")       //Coloca um ponto entre o terceiro e o quarto dígitos
+            //de novo (para o segundo bloco de números)
+            v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2") //Coloca um hífen entre o terceiro e o quarto dígitos
+            return v
+        }
+</script>
 }

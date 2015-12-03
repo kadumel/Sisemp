@@ -53,7 +53,6 @@ namespace Sisemp.Controllers
         public ActionResult Criar()
         {
             ViewBag.AplId = new SelectList(appApl.ListarTodos(), "CODIGO", "CODIGO");
-            ViewBag.RotId = new SelectList(appRot.ListarTodos(), "CODIGO", "NOME");
             return View();
         }
 
@@ -65,7 +64,7 @@ namespace Sisemp.Controllers
                 if (!Request["AplId"].Equals("") && !Request["RotId"].Equals(""))
                 {
                     obj.APL_CODIGO = Convert.ToInt32(Request["AplId"]);
-                    obj.ROT_CODIGO = Convert.ToInt32(Request["RotId"]);
+
                 }
                 appMov.Salvar(obj);
                 return RedirectToAction("Lista");
@@ -82,8 +81,6 @@ namespace Sisemp.Controllers
                 return HttpNotFound();
 
             ViewBag.AplId = new SelectList(appApl.ListarTodos(), "CODIGO", "NOME", obj.APL_CODIGO);
-            ViewBag.RotId = new SelectList(appRot.ListarTodos(), "CODIGO", "NOME", obj.ROT_CODIGO);
-
             return View(obj);
         }
 

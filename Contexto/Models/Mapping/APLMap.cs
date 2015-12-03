@@ -11,6 +11,10 @@ namespace Contexto.Models.Mapping
             this.HasKey(t => t.CODIGO);
 
             // Properties
+            this.Property(t => t.PAGT)
+                .IsFixedLength()
+                .HasMaxLength(10);
+
             // Table & Column Mappings
             this.ToTable("APL");
             this.Property(t => t.CODIGO).HasColumnName("CODIGO");
@@ -21,6 +25,8 @@ namespace Contexto.Models.Mapping
             this.Property(t => t.VALOR).HasColumnName("VALOR");
             this.Property(t => t.QTDE).HasColumnName("QTDE");
             this.Property(t => t.DTBASE).HasColumnName("DTBASE");
+            this.Property(t => t.PAGT).HasColumnName("PAGT");
+            this.Property(t => t.VL_LUCRO).HasColumnName("VL_LUCRO");
 
             // Relationships
             this.HasRequired(t => t.CLI)

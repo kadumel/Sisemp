@@ -5,7 +5,7 @@
 }
 
 <br/>
-<h2>Criar aplicação</h2>
+<h2>Cadastro de Aplicação</h2>
 <br />
 
 @using (Html.BeginForm()) 
@@ -24,7 +24,8 @@
         </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CLI_CODIGO, htmlAttributes: new { @class = "control-label col-md-2" })
+             <label class="control-label col-md-2" for="CLI_CODIGO">CLIENTE</label>
+            @*@Html.LabelFor(model => model.CLI_CODIGO, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
                 @Html.DropDownList("CliId", (IEnumerable<SelectListItem>)ViewBag.CliId, "-- Selecione a cliente --", new { @class = "form-control" })
                 @*@Html.EditorFor(model => model.CLI_CODIGO, new { htmlAttributes = new { @class = "form-control" } })*@
@@ -33,7 +34,8 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EMP_CODIGO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" for="EMP_CODIGO">EMPRESA</label>
+            @*@Html.LabelFor(model => model.EMP_CODIGO, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
                 @Html.DropDownList("EmpId", (IEnumerable<SelectListItem>)ViewBag.EmpId, "-- Selecione a empresa --", new { @class = "form-control" })
                 @*@Html.EditorFor(model => model.EMP_CODIGO, new { htmlAttributes = new { @class = "form-control" } })*@
@@ -42,41 +44,61 @@
         </div>
 
         <div class="form-group">
+            <label class="control-label col-md-2" for="PAGT">TIPO PAGTO</label>
+            @*@Html.LabelFor(model => model.PAGT, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.DropDownList("TipoId", (IEnumerable<SelectListItem>)ViewBag.TipoId, "-- Selecione o tipo de pagamento --", new { @class = "form-control" })
+                @*@Html.RadioButtonFor(model => model.PAGT, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.PAGT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
             @Html.LabelFor(model => model.DATA, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DATA, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DATA, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VALOR, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VALOR, new { htmlAttributes = new { @class = "form-control", @placeholder = "0.00" } })
+                @Html.ValidationMessageFor(model => model.VALOR, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.TAXA, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TAXA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.TAXA, new { htmlAttributes = new { @class = "form-control", @placeholder = "0.00" } })
                 @Html.ValidationMessageFor(model => model.TAXA, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.VALOR, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" for="VL_LUCRO">RETORNO</label>
+            @*@Html.LabelFor(model => model.VL_LUCRO, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
-                @Html.EditorFor(model => model.VALOR, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.VALOR, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.VL_LUCRO, new { htmlAttributes = new { @onfocus = "CALCULO()", @class = "form-control", @placeholder = "0.00" } })
+                @Html.ValidationMessageFor(model => model.VL_LUCRO, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+       <div class="form-group">
             @Html.LabelFor(model => model.QTDE, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.QTDE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.QTDE, new { htmlAttributes = new { @class = "form-control", @placeholder = "0" } })
                 @Html.ValidationMessageFor(model => model.QTDE, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DTBASE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" for="DTBASE">DATA BASE</label>
+            @*@Html.LabelFor(model => model.DTBASE, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DTBASE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DTBASE, new { htmlAttributes = new {  @class = "form-control", @onkeypress = "mascara(this,mdata)", @placeholder = "99/99/9999"}})
                 @Html.ValidationMessageFor(model => model.DTBASE, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -90,9 +112,41 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "List")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script>
+        function CALCULO(){
+            var valor = parseInt(document.getElementById("VALOR").valueOf);
+            var taxa = parseInt(document.getElementById("TAXA").valueOf);
+            var vltotal = taxa / valor;
+            document.getElementById("VL_LUCRO").valueOf = vltotal;
+        };
+
+        function mascara(o, f) {
+            v_obj = o
+            v_fun = f
+            setTimeout("execmascara()", 1)
+        }
+
+        function execmascara() {
+            v_obj.value = v_fun(v_obj.value)
+        }
+        function telefone(v) {
+            v = v.replace(/\D/g, "")                 //Remove tudo o que não é dígito
+            v = v.replace(/^(\d\d)(\d)/g, "($1) $2") //Coloca parênteses em volta dos dois primeiros dígitos
+            v = v.replace(/(\d{4})(\d)/, "$1-$2")    //Coloca hífen entre o quarto e o quinto dígitos
+            return v
+        }
+        function mdata(v) {
+            v = v.replace(/\D/g, "");                    //Remove tudo o que não é dígito
+            v = v.replace(/(\d{2})(\d)/, "$1/$2");
+            v = v.replace(/(\d{2})(\d)/, "$1/$2");
+
+            v = v.replace(/(\d{2})(\d{2})$/, "$1$2");
+            return v;
+        }
+</script>
 }

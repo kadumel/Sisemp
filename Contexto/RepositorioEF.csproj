@@ -51,11 +51,14 @@
     <Compile Include="Aplicação\ApCrd.cs" />
     <Compile Include="Aplicação\ApEmp.cs" />
     <Compile Include="Aplicação\ApMov.cs" />
+    <Compile Include="Aplicação\ApRdm.cs" />
     <Compile Include="Aplicação\ApRot.cs" />
     <Compile Include="Conexao\AplCon.cs" />
     <Compile Include="Conexao\CliCon.cs" />
     <Compile Include="Conexao\CrdCon.cs" />
     <Compile Include="Conexao\MovCon.cs" />
+    <Compile Include="Conexao\RdmCon.cs" />
+    <Compile Include="Repositorios\RdmRepositorio.cs" />
     <Compile Include="Conexao\RotCon.cs" />
     <Compile Include="Contrato\IRepositorio.cs" />
     <Compile Include="Conexao\empCon.cs" />

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Contexto.Models.RDM>
+
+@{
+    ViewBag.Title = "Lista";
+}
+<br />
+<h2>Lista de Despesas</h2>
+<br />
+@using (Html.BeginForm())
+{
+    <div class="form-search">
+        <input type="text" class="input-medium search-query" name="pesquisa">
+        <button type="submit" class="btn">Buscar</button>
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Novo", "Criar")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CODIGO)
+        </th>
+        <th>
+            ROTA
+            @*@Html.DisplayNameFor(model => model.ROT_CODIGO)*@
+        </th>
+        <th>
+            DESPESA
+            @*@Html.DisplayNameFor(model => model.CRD_CODIGO)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VALOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATA)
+        </th>
+        <th>
+            AÇÕES
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODIGO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ROT.NOME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CRD.NOME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VALOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DATA)
+        </td>
+        <td>
+            @Html.ActionLink("Alterar", "Editar", new {id=item.CODIGO }) |
+            @Html.ActionLink("Excluir", "Excluir", new {id=item.CODIGO})
+        </td>
+    </tr>
+}
+
+</table>

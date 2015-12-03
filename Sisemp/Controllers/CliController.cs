@@ -14,13 +14,13 @@ namespace Sisemp.Controllers
     public class CliController : Controller
     {
 
-        private readonly ApEmp appEmp;
+        private readonly ApRot appRot;
         private readonly ApCli appCli;
        
         public CliController()
         {
             appCli = CliCon.ApCliCon();
-            appEmp = empCon.ApEmpCon();
+            appRot = RotCon.ApRotCon();
         }
 
         public ActionResult ListCli()
@@ -48,7 +48,7 @@ namespace Sisemp.Controllers
         public ActionResult CriarCLi()
         {
             
-            ViewBag.EmpId = new SelectList(appEmp.ListarTodos(), "CODIGO", "NOME");
+            ViewBag.RotaId = new SelectList(appRot.ListarTodos(), "CODIGO", "NOME");
             return View();
         }
 
@@ -57,9 +57,9 @@ namespace Sisemp.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (!Request["EmpId"].Equals(""))
+                if (!Request["RotaId"].Equals(""))
                 {
-                    cli.EMP_CODIGO = Convert.ToInt32(Request["EmpId"]);
+                    cli.ROTA = Convert.ToInt32(Request["RotaId"]);
                 }
                 
                 appCli.Salvar(cli);
@@ -75,7 +75,7 @@ namespace Sisemp.Controllers
             if (cli == null)
                 return HttpNotFound();
 
-            ViewBag.EmpId = new SelectList(appEmp.ListarTodos(), "CODIGO", "NOME", cli.EMP_CODIGO);
+            ViewBag.RotaId = new SelectList(appRot.ListarTodos(), "CODIGO", "NOME", cli.ROTA);
             return View(cli);
         }
 

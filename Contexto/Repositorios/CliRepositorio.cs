@@ -22,19 +22,18 @@ namespace Contexto.Repositorios
             if (cli.CODIGO > 0)
                 {
                     var cliAlterar = contexto.CLIs.First(x => x.CODIGO == cli.CODIGO);
-                    cliAlterar.EMP_CODIGO = cli.EMP_CODIGO;
-                    cliAlterar.NOME = cli.NOME.ToUpper().Trim();
-                    cliAlterar.RAZAOSOCIAL = cli.RAZAOSOCIAL.ToUpper().Trim();
-                    cliAlterar.CPF_CNPJ = cli.CPF_CNPJ.ToUpper().Trim();
-                    cliAlterar.END = cli.END.ToUpper().Trim();
-                    cliAlterar.COMP = cli.COMP.ToUpper().Trim();
-                    cliAlterar.CEP = cli.CEP.ToUpper().Trim();
-                    cliAlterar.BAIRRO = cli.BAIRRO.ToUpper().Trim();
-                    cliAlterar.CIDADE = cli.CIDADE.ToUpper().Trim();
-                    cliAlterar.UF = cli.UF.ToUpper().Trim();
-                    cliAlterar.TEL = cli.TEL.ToUpper().Trim();
-                    cliAlterar.CEL = cli.CEL.ToUpper().Trim();
-                    cliAlterar.OBS = cli.OBS.ToUpper().Trim();
+                cliAlterar.NOME = cli.NOME != null ? cli.NOME.ToUpper().Trim() : cli.NOME;
+                cliAlterar.RAZAOSOCIAL = cli.RAZAOSOCIAL != null ? cli.RAZAOSOCIAL.ToUpper().Trim() : cli.RAZAOSOCIAL;
+                cliAlterar.CPF_CNPJ = cli.CPF_CNPJ.ToUpper().Trim();
+                cliAlterar.END = cli.END != null ? cli.END.ToUpper().Trim() : cli.END;
+                cliAlterar.COMP = cli.COMP != null ? cli.COMP.ToUpper().Trim() : cli.COMP;
+                cliAlterar.BAIRRO = cli.BAIRRO != null ? cli.BAIRRO.ToUpper().Trim() : cli.BAIRRO;
+                cliAlterar.ROTA = cli.ROTA;
+                cliAlterar.CIDADE = cli.CIDADE != null ? cli.CIDADE.ToUpper().Trim() : cli.CIDADE;
+                cliAlterar.UF = cli.UF != null ? cli.UF.ToUpper().Trim() : cli.UF;
+                cliAlterar.TEL = cli.TEL != null ? cli.TEL.ToUpper().Trim() : cli.TEL;
+                cliAlterar.CEL = cli.CEL != null ? cli.CEL.ToUpper().Trim() : cli.CEL;
+                cliAlterar.OBS = cli.OBS != null ? cli.OBS.ToUpper().Trim() : cli.OBS;
                 }
                 else
                 {
@@ -55,18 +54,35 @@ namespace Contexto.Repositorios
                     //cli.CEL = cli.CEL.Equals(null) ? cli.CEL : cli.CEL.Trim();
                     //cli.OBS = cli.OBS.Equals(null) ? cli.OBS : cli.OBS.Trim();
 
-                    cli.NOME = cli.NOME.ToUpper().Trim();
-                    cli.RAZAOSOCIAL = cli.RAZAOSOCIAL.ToUpper().Trim();
-                    cli.END = cli.END.ToUpper().Trim();
-                    cli.COMP = cli.COMP.ToUpper().Trim();
-                    cli.BAIRRO = cli.BAIRRO.ToUpper().Trim();
-                    cli.CIDADE = cli.CIDADE.ToUpper().Trim();
-                    cli.UF = cli.UF.ToUpper().Trim();
-                    cli.OBS = cli.OBS.ToUpper().Trim();
+                    if (cli.NOME != null)
+                        cli.NOME = cli.NOME.ToUpper().Trim();
+                    cli.CPF_CNPJ = cli.CPF_CNPJ.Replace(".","").Replace("-","").Replace("/","");
+                    if (cli.RAZAOSOCIAL != null)
+                        cli.RAZAOSOCIAL = cli.RAZAOSOCIAL.ToUpper().Trim();
+                    if (cli.END != null)
+                        cli.END = cli.END.ToUpper().Trim();
+                    if (cli.COMP != null)
+                        cli.COMP.ToUpper().Trim();
+                    if (cli.BAIRRO != null)
+                        cli.BAIRRO = cli.BAIRRO.ToUpper().Trim();
+                    if (cli.CIDADE != null)
+                        cli.CIDADE = cli.CIDADE.ToUpper().Trim();
+                    if (cli.UF != null)
+                        cli.UF = cli.UF.ToUpper().Trim();
+                    if (cli.OBS != null)
+                        cli.OBS = cli.OBS.ToUpper().Trim();
+                if (cli.TEL != null)
+                    cli.TEL = cli.TEL.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
+                cli.CEL = cli.CEL.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
                     contexto.CLIs.Add(cli);
                 }
                 contexto.SaveChanges();
 
+        }
+
+        private void IF(bool p)
+        {
+            throw new NotImplementedException();
         }
 
         public void Excluir(CLI cli)

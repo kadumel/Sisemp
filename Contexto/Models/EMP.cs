@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Contexto.Models
 {
@@ -11,7 +12,9 @@ namespace Contexto.Models
         }
 
         public int CODIGO { get; set; }
+        [Required(ErrorMessage = "Preenchimento obrigatorio!!!")]
         public string NOME { get; set; }
+        [Required(ErrorMessage = "Preenchimento obrigatorio!!!")]
         public string RAZAOSOCIAL { get; set; }
         public virtual ICollection<APL> APLs { get; set; }
     }

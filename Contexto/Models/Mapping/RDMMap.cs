@@ -14,17 +14,18 @@ namespace Contexto.Models.Mapping
             // Table & Column Mappings
             this.ToTable("RDM");
             this.Property(t => t.CODIGO).HasColumnName("CODIGO");
-            this.Property(t => t.MOV_CODIGO).HasColumnName("MOV_CODIGO");
+            this.Property(t => t.ROT_CODIGO).HasColumnName("ROT_CODIGO");
             this.Property(t => t.CRD_CODIGO).HasColumnName("CRD_CODIGO");
             this.Property(t => t.VALOR).HasColumnName("VALOR");
+            this.Property(t => t.DATA).HasColumnName("DATA");
 
             // Relationships
             this.HasRequired(t => t.CRD)
                 .WithMany(t => t.RDMs)
                 .HasForeignKey(d => d.CRD_CODIGO);
-            this.HasRequired(t => t.MOV)
+            this.HasOptional(t => t.ROT)
                 .WithMany(t => t.RDMs)
-                .HasForeignKey(d => d.MOV_CODIGO);
+                .HasForeignKey(d => d.ROT_CODIGO);
 
         }
     }

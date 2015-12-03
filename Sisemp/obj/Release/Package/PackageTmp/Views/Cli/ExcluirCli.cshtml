@@ -1,0 +1,136 @@
+﻿@model Contexto.Models.CLI
+
+@{
+    ViewBag.Title = "Excluir";
+}
+<br />
+<h2>Excluir Cliente</h2>
+<br />
+<h3>Tem certeza que deseja excluir cadastro?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CODIGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CODIGO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMP_CODIGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMP_CODIGO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RAZAOSOCIAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RAZAOSOCIAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPF_CNPJ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPF_CNPJ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.END)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.END)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BAIRRO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BAIRRO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CIDADE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CIDADE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OBS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OBS)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "ListCli")
+        </div>
+    }
+</div>

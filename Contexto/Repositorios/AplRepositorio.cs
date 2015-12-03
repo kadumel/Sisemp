@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using RepositorioEF;
 using Contexto.Models;
 
+
 namespace Contexto.Repositorios
 {
     class AplRepositorio : IRepositorio<APL>
@@ -24,10 +25,19 @@ namespace Contexto.Repositorios
             if (mod.CODIGO > 0)
                 {
                     var Alterar = contexto.APLs.First(x => x.CODIGO == mod.CODIGO);
+                    Alterar.CLI_CODIGO = mod.CLI_CODIGO;
+                    Alterar.EMP_CODIGO = mod.EMP_CODIGO;
+                    Alterar.TAXA = mod.TAXA;
+                    Alterar.VALOR = mod.VALOR;
+                    Alterar.QTDE = mod.QTDE;
+                    Alterar.VL_LUCRO = mod.VL_LUCRO;
+                    Alterar.PAGT = mod.PAGT;
+                    Alterar.DTBASE = mod.DTBASE;
+
                 }
                 else
                 {
-
+                    mod.DATA = DateTime.Now;
                     contexto.APLs.Add(mod);
                 }
                 contexto.SaveChanges();
